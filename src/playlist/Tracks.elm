@@ -1,7 +1,7 @@
 module Playlist.Tracks exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (class, controls, preload, src)
 import Html.Events exposing (onClick)
 import Msgs exposing (Msg)
 import Models exposing (Model, Track, Playlist)
@@ -44,7 +44,9 @@ trackRow track =
           Maybe.withDefault "unknown" (List.head track.artists)
     in
       li [ class "collection-item" ]
-        [ text (track.name ++ " - " ++  artist) ]
+        [ audio [ src track.previewUrl, preload "auto", controls True ] []
+        , div [] [ text (track.name ++ " - " ++  artist) ]
+        ]
 
 followBtn : String -> Bool -> Html Msg
 followBtn playlistName isFollowing =

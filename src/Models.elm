@@ -57,6 +57,7 @@ type alias Playlist =
 type alias Track =
     { name : String
     , artists : (List String)
+    , previewUrl : String
     }
 
 type alias User =

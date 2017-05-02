@@ -5,11 +5,12 @@ import Msgs exposing (Msg)
 import Models exposing (Model)
 import Routing exposing (parseLocation, getRouteCmd, redirectToSearch)
 import RemoteData exposing (WebData)
+import Http exposing (Error(..))
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-      Msgs.OnSearch (response) ->
+      Msgs.OnSearch response ->
         ( { model | playlists = response }, Cmd.none )
 
       Msgs.OnPlaylistView (RemoteData.Failure _) ->
